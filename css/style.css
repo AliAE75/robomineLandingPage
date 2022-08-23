@@ -1,0 +1,415 @@
+/* -----------------------------------------
+fonts
+----------------------------------------- */
+@import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
+
+/* -----------------------------------------
+variables
+----------------------------------------- */
+:root {
+  --main-color: #10122d;
+  --main-text-color: #3297cc;
+  --dark-light: #191f3a;
+  --white: #ffffff;
+  --white-light: #c8c8c8;
+  --shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  --cursive-font: 'Dancing Script', cursive;
+  scroll-behavior: smooth;
+}
+
+/* -----------------------------------------
+global settings
+----------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  text-decoration: none;
+}
+
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 16px;
+  color: #f5f5f5;
+  font-family: "Montserrat", "Lato", sans-serif;
+  vertical-align: baseline;
+  line-height: 26px;
+  font-weight: 400;
+  overflow-x: hidden;
+  background: var(--main-color);
+  transition: all .3s;
+}
+
+body {
+  height: 100vh;
+  position: relative;
+  background: #08091b;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+a {
+  color: #f5f5f5;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 3rem 3rem 4rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.brand-button {
+  display: flex;
+  height: 15%;
+  width: 100%;
+}
+
+.brand-button .button-dev,
+.brand-button .brand {
+  display: flex;
+  align-items: center;
+  justify-self: start;
+  width: 50%;
+}
+
+.brand img {
+  height: 5rem;
+  margin-right: 1.2rem;
+}
+
+.brand p {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #f5f5f5;
+}
+
+.brand-button .button-dev {
+  justify-content: end;
+}
+
+.button {
+
+  --offset: 10px;
+  --border-size: 2px;
+
+  display: block;
+  position: relative;
+  padding: 1.5em 3em;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #f5f5f5;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+  transition: background .8s ease;
+}
+
+.button {
+  --offset: 10px;
+  --border-size: 2px;
+  display: block;
+  position: relative;
+  padding: 1rem 1.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #f5f5f5;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+  transition: background 0.8s ease;
+}
+
+.button:hover {
+  background: rgba(100, 0, 0, 0.03);
+}
+
+.button__horizontal,
+.button__vertical {
+  position: absolute;
+  top: var(--horizontal-offset, 0);
+  right: var(--vertical-offset, 0);
+  bottom: var(--horizontal-offset, 0);
+  left: var(--vertical-offset, 0);
+  transition: transform 0.8s ease;
+  will-change: transform;
+}
+
+.button__horizontal::before,
+.button__vertical::before {
+  content: "";
+  position: absolute;
+  border: inherit;
+}
+
+.button__horizontal {
+  --vertical-offset: calc(var(--offset) * -1);
+  border-top: var(--border-size) solid currentcolor;
+  border-bottom: var(--border-size) solid currentcolor;
+}
+
+.button__horizontal::before {
+  top: calc(var(--vertical-offset) - var(--border-size));
+  bottom: calc(var(--vertical-offset) - var(--border-size));
+  left: calc(var(--vertical-offset) * -1);
+  right: calc(var(--vertical-offset) * -1);
+}
+
+.button:hover .button__horizontal {
+  transform: scaleX(0);
+}
+
+.button__vertical {
+  --horizontal-offset: calc(var(--offset) * -1);
+  border-left: var(--border-size) solid currentcolor;
+  border-right: var(--border-size) solid currentcolor;
+}
+
+.button__vertical::before {
+  top: calc(var(--horizontal-offset) * -1);
+  bottom: calc(var(--horizontal-offset) * -1);
+  left: calc(var(--horizontal-offset) - var(--border-size));
+  right: calc(var(--horizontal-offset) - var(--border-size));
+}
+
+.button:hover .button__vertical {
+  transform: scaleY(0);
+}
+
+.coming {
+  display: flex;
+  flex-direction: column;
+  height: 65%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.coming .p-1 {
+  font-size: 130px;
+  font-weight: 500;
+  font-family: 'Playfair Display', serif;
+  margin-top: 9rem;
+}
+
+.coming .p-2 {
+  text-transform: uppercase;
+  margin: 6rem 0 2rem;
+  font-weight: 500;
+}
+
+.coming .p-3 {
+  font-weight: 500;
+}
+
+.countdown-social {
+  display: flex;
+  height: 20%;
+  align-items: end;
+}
+
+.countdown,
+.social {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: start;
+  font-weight: 700;
+}
+
+.social {
+  align-items: end;
+}
+
+.social .items {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social .items>* {
+  font-size: 25px;
+}
+
+.social .items a:hover>i {
+  animation: hover 1.5s .3s infinite;
+}
+
+@keyframes hover {
+  0% {
+    color: #f5f5f5;
+  }
+
+  50% {
+    color: transparent;
+  }
+
+  100% {
+    color: #f5f5f5;
+  }
+}
+
+.countdown #clockdiv {
+  display: flex;
+  font-size: 25px;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+#clockdiv>div {
+  background: transparent;
+  display: flex;
+}
+
+#clockdiv>div:last-child:after {
+  display: none
+}
+
+#clockdiv div>span {
+  font-family: 'Oswald', sans-serif;
+  border: none;
+}
+
+.smalltext {
+  font-size: 14px;
+  color: darkgrey;
+  margin-left: 4px;
+  padding-top: 4px;
+
+}
+
+
+@media only screen and (max-width: 910px) {
+
+  .p-1 {
+    font-size: 80px !important;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  .p-1 {
+    font-size: 70px !important;
+  }
+
+  .p-2 {
+    margin: 4rem 0 1rem !important;
+  }
+
+  .brand img {
+    height: 4rem;
+  }
+
+  .brand p {
+    font-weight: 700;
+    font-size: 25px;
+  }
+
+  .button a {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+}
+
+@media only screen and (max-width: 540px) {
+
+  .container {
+    padding: 0rem 2rem 3rem;
+  }
+
+  .p-1 {
+    font-size: 40px !important;
+    margin-top: 6rem !important;
+  }
+
+  .p-2 {
+    margin: 2rem 0 .5rem !important;
+    font-size: 10px;
+  }
+
+  .brand img {
+    height: 2rem;
+    margin-right: .5rem;
+  }
+
+  .brand p {
+    font-weight: 500;
+    font-size: 15px;
+  }
+
+  .button {
+    padding: .7rem 1rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    letter-spacing: 0;
+    outline: none;
+    font-weight: 500;
+  }
+
+  .countdown-social {
+    display: flex;
+    flex-direction: column;
+    height: 20%;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .countdown,
+  .social {
+    font-weight: 500;
+    align-items: center;
+  }
+
+  .social .items {
+    gap: 1rem;
+  }
+
+  .social .items>* {
+    font-size: 25px;
+  }
+
+  .countdown #clockdiv {
+    font-size: 25px;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+}
